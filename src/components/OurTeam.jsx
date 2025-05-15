@@ -6,9 +6,9 @@ import { ChevronLeft, ChevronRight, Linkedin, Twitter, Mail } from "lucide-react
 
 
 import mikiyasImage from "../assets/miki.jpg"
-import amenImage from "../assets/aman2.jpg"
+import amenImage from "../assets/aman2.jpg" 
 import betImage from "../assets/betse.jpg"
-import jecoliahImage from "../assets/jecoliah.jpg"
+import jecoliahImage from "../assets/Jecoliah.jpg"
 import bisratImage from "../assets/bisrat.jpg"  
 import tesfahunImage from "../assets/tesfahun.jpg"      
 
