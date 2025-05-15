@@ -63,9 +63,7 @@ export default function Header() {
             <NavLink href="#team" icon={<FiUsers className="mr-1" />}>
               Team
             </NavLink>
-            <NavLink href="#about" icon={<FiInfo className="mr-1" />}>
-              About
-            </NavLink>
+           
             <NavLink onClick={openContact} icon={<FiPhone className="mr-1" />}>
               Contact
             </NavLink>

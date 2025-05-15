@@ -5,6 +5,7 @@ import Services from '../components/Services'
 import Projects from '../components/Projects'
 import OurTeam from '../components/OurTeam'
 import ChatIcon from '../components/ChatIcon'
+import Footer from '../components/Footer'
 export const Home = () => {
   return (
     <>
@@ -14,6 +15,7 @@ export const Home = () => {
        <Projects />
        <OurTeam />
        <ChatIcon />
+       <Footer/>
 
 
 
