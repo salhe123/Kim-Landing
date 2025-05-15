@@ -14,7 +14,6 @@ import {
   CuboidIcon as Cube,
   Video,
   TrendingUp,
-  ArrowRight,
 } from "lucide-react"
 
 export default function Services() {
@@ -26,74 +25,65 @@ export default function Services() {
     {
       title: "Web Development",
       description:
-        "Build user-friendly websites that work seamlessly on all devices. Create intuitive designs that enhance user experience and engagement.",
+        "Build user-friendly websites that work seamlessly on all devices. Our expert team creates intuitive designs that enhance user experience and drive engagement. We specialize in developing custom websites that align with your brand identity and business objectives. From simple landing pages to complex e-commerce platforms, we deliver solutions that help your business establish a strong online presence and achieve your digital goals.",
       icon: <Code size={36} />,
       color: "#5D5FEF",
-      features: ["Responsive Design", "E-commerce Solutions", "CMS Integration", "Performance Optimization"],
     },
     {
       title: "Mobile App Development",
       description:
-        "Custom iOS and Android applications tailored to your business needs, along with efficient cross-platform solutions.",
+        "Custom iOS and Android applications tailored to your business needs. We deliver efficient cross-platform solutions that provide exceptional user experiences. Our development process ensures your app is intuitive, feature-rich, and optimized for performance across all mobile devices. We handle everything from concept and design to development, testing, and deployment, ensuring your app stands out in the crowded marketplace.",
       icon: <Smartphone size={36} />,
       color: "#4EADC5",
-      features: ["Native Apps", "Cross-Platform Development", "UI/UX Design", "App Store Optimization"],
     },
     {
       title: "UI/UX Design",
       description:
-        "Emphasizing user-centric design to create intuitive interfaces, along with prototyping and wireframing to visualize and test concepts.",
+        "Emphasizing user-centric design to create intuitive interfaces that delight users. Our design process includes comprehensive prototyping and wireframing to visualize and test concepts before development. We focus on creating seamless user journeys that drive engagement and conversion. By combining aesthetic appeal with functional design, we create digital experiences that users love to interact with and that achieve your business objectives.",
       icon: <Palette size={36} />,
       color: "#FF9F43",
-      features: ["User Research", "Wireframing", "Prototyping", "Usability Testing"],
     },
     {
       title: "Web Hosting",
       description:
-        "Ensures that your website is accessible to users, allowing businesses and individuals to establish their online presence easily.",
+        "Reliable hosting solutions that ensure your website is accessible to users 24/7. Our hosting services allow businesses and individuals to establish their online presence easily and securely. We provide comprehensive support, regular backups, and robust security measures to protect your digital assets. With our scalable hosting solutions, your website can handle increasing traffic and growing business demands without compromising on performance or security.",
       icon: <Server size={36} />,
       color: "#0ABDE3",
-      features: ["Reliable Servers", "24/7 Support", "Security Monitoring", "Scalable Solutions"],
     },
     {
       title: "Graphics Design",
       description:
-        "Creating logos, branding assets, and digital visuals for websites and social media by merging artistic flair with technical expertise.",
+        "Creating compelling logos, branding assets, and digital visuals for websites and social media by merging artistic flair with technical expertise. Our design team works closely with you to understand your brand values and target audience, ensuring all visual elements communicate your unique identity effectively. From logo design and brand guidelines to marketing materials and social media graphics, we create visuals that capture attention and convey your message clearly.",
       icon: <PenTool size={36} />,
       color: "#FF6B6B",
-      features: ["Logo Design", "Brand Identity", "Marketing Materials", "Social Media Graphics"],
     },
     {
       title: "Printing",
       description:
-        "Our printing design service specializes in creating high-quality graphics for print media like brochures, business cards, and posters.",
+        "Our printing design service specializes in creating high-quality graphics for print media. From business cards and brochures to posters and promotional materials, we ensure your printed materials make a lasting impression. We handle the entire process from design to production, ensuring consistent quality. Our attention to detail and commitment to excellence ensure that your printed materials effectively represent your brand and communicate your message to your target audience.",
       icon: <Printer size={36} />,
       color: "#8395A7",
-      features: ["Business Cards", "Brochures", "Posters", "Promotional Materials"],
     },
     {
       title: "3D Designing",
       description:
-        "Offers innovative solutions for creating detailed three-dimensional models and visualizations. Whether for product design, architectural visualization, or entertainment.",
+        "Innovative solutions for creating detailed three-dimensional models and visualizations. Our 3D design services cover product design, architectural visualization, character modeling, and more. We transform concepts into realistic 3D representations that can be used for marketing, presentations, or production. Whether you need product prototypes, architectural renderings, or immersive virtual experiences, our 3D design expertise brings your ideas to life with stunning detail and realism.",
       icon: <Cube size={36} />,
       color: "#8854D0",
-      features: ["Product Visualization", "Architectural Rendering", "Character Modeling", "Animation"],
     },
     {
       title: "Video Editing",
       description:
-        "Transforms raw footage into polished, engaging content. We specialize in creating captivating videos for marketing, social media, and more.",
+        "Transform raw footage into polished, engaging content that captivates your audience. Our video editing team specializes in creating compelling videos for marketing, social media, corporate communications, and more. We handle everything from basic editing to advanced post-production effects. With our expertise in storytelling and visual communication, we create videos that effectively convey your message, evoke emotions, and inspire action from your target audience.",
       icon: <Video size={36} />,
       color: "#C56CF0",
-      features: ["Commercial Production", "Social Media Content", "Motion Graphics", "Color Grading"],
     },
     {
       title: "Market Consultancy",
       description:
-        "Expert analysis and strategic insights to help businesses understand market trends, identify opportunities, and make informed decisions for sustainable growth.",
+        "Expert analysis and strategic insights to help businesses understand market trends, identify opportunities, and make informed decisions. Our consultancy services provide comprehensive market research, competitive analysis, and actionable recommendations to drive sustainable growth and maximize your market potential. We work closely with you to understand your business goals and challenges, then develop tailored strategies that leverage market opportunities and mitigate risks to ensure long-term success.",
       icon: <TrendingUp size={36} />,
       color: "#00D2D3",
-      features: ["Market Research", "Competitive Analysis", "Growth Strategy", "Performance Tracking"],
     },
   ]
 
@@ -104,7 +94,7 @@ export default function Services() {
       if (!isPaused) {
         setActiveIndex((prevIndex) => (prevIndex + 1) % services.length)
       }
-    }, 5000)
+    }, 10000) // Changed to 10 seconds
   }
 
   useEffect(() => {
@@ -117,19 +107,19 @@ export default function Services() {
   const handlePrev = () => {
     setActiveIndex((prevIndex) => (prevIndex - 1 + services.length) % services.length)
     setIsPaused(true)
-    setTimeout(() => setIsPaused(false), 10000) // Resume auto-play after 10 seconds
+    setTimeout(() => setIsPaused(false), 15000) // Resume auto-play after 15 seconds
   }
 
   const handleNext = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % services.length)
     setIsPaused(true)
-    setTimeout(() => setIsPaused(false), 10000) // Resume auto-play after 10 seconds
+    setTimeout(() => setIsPaused(false), 15000) // Resume auto-play after 15 seconds
   }
 
   const handleDotClick = (index) => {
     setActiveIndex(index)
     setIsPaused(true)
-    setTimeout(() => setIsPaused(false), 10000) // Resume auto-play after 10 seconds
+    setTimeout(() => setIsPaused(false), 15000) // Resume auto-play after 15 seconds
   }
 
   return (
@@ -170,12 +160,13 @@ export default function Services() {
             viewport={{ once: true }}
           >
             We offer a comprehensive range of digital solutions to help your business thrive in the digital landscape.
+            Our expert team delivers tailored services to meet your unique needs and objectives.
           </motion.p>
         </div>
 
         <div className="relative max-w-6xl mx-auto">
           {/* Featured Service */}
-          <div className="relative h-[500px] md:h-[400px] mb-16">
+          <div className="relative h-[450px] md:h-[400px] mb-16">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -259,7 +250,7 @@ export default function Services() {
                   </motion.span>
 
                   <motion.h3
-                    className="text-3xl font-bold text-[#033D54] mb-4"
+                    className="text-3xl font-bold mb-6"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
@@ -269,45 +260,13 @@ export default function Services() {
                   </motion.h3>
 
                   <motion.p
-                    className="text-gray-600 text-lg mb-6"
+                    className="text-gray-700 text-lg leading-relaxed"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.3, delay: 0.2 }}
                   >
                     {services[activeIndex].description}
                   </motion.p>
-
-                  {/* Features list */}
-                  <motion.div
-                    className="grid grid-cols-2 gap-3 mb-8"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.3 }}
-                  >
-                    {services[activeIndex].features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center">
-                        <div
-                          className="w-2 h-2 rounded-full mr-2"
-                          style={{ backgroundColor: services[activeIndex].color }}
-                        ></div>
-                        <span className="text-gray-700">{feature}</span>
-                      </div>
-                    ))}
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.4 }}
-                  >
-                    <button
-                      className="px-8 py-3 rounded-lg text-white font-medium flex items-center shadow-md hover:shadow-lg transition-all"
-                      style={{ backgroundColor: services[activeIndex].color }}
-                    >
-                      Learn More
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </button>
-                  </motion.div>
                 </div>
               </motion.div>
             </AnimatePresence>
