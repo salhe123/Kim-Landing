@@ -6,7 +6,7 @@ import { ExternalLink, ChevronRight } from "lucide-react"
 
 import nawlaImage from "../assets/Nawla.jpg"
 import gojoImage from "../assets/gojo.jpg"
-import brandImage from "../assets/brand.png"
+import brandImage from "../assets/Brand.png"
 import heiverImage from "../assets/photo_2025-01-29_00-49-54.jpg"
 import negaritImage from "../assets/photo_2025-01-29_00-49-57.jpg"
 import agapeImage from "../assets/photo_2025-01-29_00-50-03.jpg"
