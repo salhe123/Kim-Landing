@@ -1,18 +1,43 @@
 "use client"
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { FiHome, FiServer, FiUsers, FiInfo, FiPhone, FiMenu, FiX, FiFolder } from "react-icons/fi"
-import Contact from "./Contact"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { 
+  FiHome, 
+  FiServer, 
+  FiUsers, 
+  FiInfo, 
+  FiPhone, 
+  FiMenu, 
+  FiX, 
+  FiFolder 
+} from "react-icons/fi";
+import { Link, useNavigate } from "react-router-dom";
+import Contact from "./Contact";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isContactOpen, setIsContactOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const navigate = useNavigate();
 
   const openContact = () => {
-    setIsContactOpen(true)
-    setIsMenuOpen(false) // Close mobile menu if open
-  }
+    setIsContactOpen(true);
+    setIsMenuOpen(false);
+  };
+
+  const handleHashLink = (hash) => {
+    if (window.location.pathname !== "/") {
+      navigate(`/#${hash}`);
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        element?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      const element = document.getElementById(hash);
+      element?.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsMenuOpen(false);
+  };
 
   return (
     <>
@@ -28,42 +53,46 @@ export default function Header() {
         </div>
 
         <div className="container mx-auto px-4 py-3 flex justify-between items-center relative z-10">
-          {/* Animated Logo */}
+          {/* Logo */}
           <motion.div
             className="flex items-center pl-0 md:pl-8"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="relative"
-            >
-              <img src="/logo.jpg" alt="IKIM Tech Logo" className="h-10 md:h-12 object-contain" />
+            <Link to="/">
               <motion.div
-                className="absolute inset-0 bg-white rounded-full filter blur-md opacity-20"
-                animate={{ opacity: [0.1, 0.2, 0.1] }}
-                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-              />
-            </motion.div>
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="relative"
+              >
+                <img src="/logo.jpg" alt="IKIM Tech Logo" className="h-10 md:h-12 object-contain" />
+                <motion.div
+                  className="absolute inset-0 bg-white rounded-full filter blur-md opacity-20"
+                  animate={{ opacity: [0.1, 0.2, 0.1] }}
+                  transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                />
+              </motion.div>
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 md:space-x-8 pr-0 md:pr-8">
-            <NavLink href="#home" icon={<FiHome className="mr-1" />}>
+            <NavLink onClick={() => handleHashLink("home")} icon={<FiHome className="mr-1" />}>
               Home
             </NavLink>
-            <NavLink href="#services" icon={<FiServer className="mr-1" />}>
+            <NavLink onClick={() => handleHashLink("about")} icon={<FiInfo className="mr-1" />}>
+              About Us
+            </NavLink>
+            <NavLink onClick={() => handleHashLink("services")} icon={<FiServer className="mr-1" />}>
               Services
             </NavLink>
-            <NavLink href="#projects" icon={<FiFolder className="mr-1" />}>
+            <NavLink onClick={() => handleHashLink("projects")} icon={<FiFolder className="mr-1" />}>
               Projects
             </NavLink>
-            <NavLink href="#team" icon={<FiUsers className="mr-1" />}>
+            <NavLink href="/team" icon={<FiUsers className="mr-1" />}>
               Team
             </NavLink>
-           
             <NavLink onClick={openContact} icon={<FiPhone className="mr-1" />}>
               Contact
             </NavLink>
@@ -91,22 +120,22 @@ export default function Header() {
               transition={{ duration: 0.3 }}
             >
               <nav className="flex flex-col space-y-4">
-                <MobileNavLink href="#home" icon={<FiHome size={18} />} onClick={() => setIsMenuOpen(false)}>
+                <MobileNavLink onClick={() => handleHashLink("home")} icon={<FiHome size={18} />}>
                   Home
                 </MobileNavLink>
-                <MobileNavLink href="#services" icon={<FiServer size={18} />} onClick={() => setIsMenuOpen(false)}>
+                <MobileNavLink onClick={() => handleHashLink("about")} icon={<FiInfo size={18} />}>
+                  About Us
+                </MobileNavLink>
+                <MobileNavLink onClick={() => handleHashLink("services")} icon={<FiServer size={18} />}>
                   Services
                 </MobileNavLink>
-                <MobileNavLink href="#projects" icon={<FiFolder size={18} />} onClick={() => setIsMenuOpen(false)}>
+                <MobileNavLink onClick={() => handleHashLink("projects")} icon={<FiFolder size={18} />}>
                   Projects
                 </MobileNavLink>
-                <MobileNavLink href="#team" icon={<FiUsers size={18} />} onClick={() => setIsMenuOpen(false)}>
+                <MobileNavLink href="/team" icon={<FiUsers size={18} />}>
                   Team
                 </MobileNavLink>
-                <MobileNavLink href="#about" icon={<FiInfo size={18} />} onClick={() => setIsMenuOpen(false)}>
-                  About
-                </MobileNavLink>
-                <MobileNavLink icon={<FiPhone size={18} />} onClick={openContact}>
+                <MobileNavLink onClick={openContact} icon={<FiPhone size={18} />}>
                   Contact
                 </MobileNavLink>
               </nav>
@@ -115,36 +144,60 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Contact Modal */}
       <Contact isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </>
-  )
+  );
 }
 
-// Desktop navigation with hover effects
+// NavLink Component
 function NavLink({ href, children, icon, onClick }) {
+  if (href) {
+    return (
+      <Link to={href}>
+        <motion.div
+          className="relative text-white hover:text-[#FFD700] transition-colors duration-300 flex items-center cursor-pointer"
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+          {icon}
+          <span className="relative group">
+            {children}
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FFD700] transition-all duration-300 group-hover:w-full"></span>
+          </span>
+        </motion.div>
+      </Link>
+    );
+  }
+
   return (
-    <motion.a
-      href={href}
+    <motion.div
       onClick={onClick}
       className="relative text-white hover:text-[#FFD700] transition-colors duration-300 flex items-center cursor-pointer"
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 400, damping: 10 }}
     >
-      {icon && icon}
+      {icon}
       <span className="relative group">
         {children}
         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FFD700] transition-all duration-300 group-hover:w-full"></span>
       </span>
-    </motion.a>
-  )
+    </motion.div>
+  );
 }
 
-// Mobile navigation with hover effects
+// MobileNavLink Component
 function MobileNavLink({ href, children, icon, onClick }) {
+  if (href) {
+    return (
+      <Link to={href} className="flex items-center py-2 px-4 text-white hover:text-[#FFD700] hover:bg-white/5 rounded transition-all duration-300">
+        {icon && <span className="mr-2">{icon}</span>}
+        {children}
+      </Link>
+    );
+  }
+
   return (
-    <motion.a
-      href={href}
+    <motion.div
       onClick={onClick}
       className="flex items-center py-2 px-4 text-white hover:text-[#FFD700] hover:bg-white/5 rounded transition-all duration-300 cursor-pointer"
       whileHover={{ x: 5 }}
@@ -152,6 +205,6 @@ function MobileNavLink({ href, children, icon, onClick }) {
     >
       {icon && <span className="mr-2">{icon}</span>}
       {children}
-    </motion.a>
-  )
+    </motion.div>
+  );
 }
